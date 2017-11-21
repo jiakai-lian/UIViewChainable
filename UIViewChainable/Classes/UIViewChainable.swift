@@ -6,8 +6,8 @@
 
 import UIKit
 
-protocol UIViewChainable {}
-extension UIViewChainable where Self: UIView {
+public protocol UIViewChainable {}
+public extension UIViewChainable where Self: UIView {
     @discardableResult
     func config(_ config: (Self) -> Void) -> Self {
         config(self)
