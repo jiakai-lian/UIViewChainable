@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UIViewChainable'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'An elegent extension to make UIView layout and confiugration chainable'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ An elegent extension to make UIView layout and confiugration chainable.
   s.source           = { :git => 'https://github.com/jiakai-lian/UIViewChainable.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = 'UIViewChainable/Classes/**/*'
   
@@ -37,6 +37,6 @@ An elegent extension to make UIView layout and confiugration chainable.
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
