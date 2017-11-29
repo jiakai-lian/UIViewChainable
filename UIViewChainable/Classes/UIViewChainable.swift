@@ -22,6 +22,7 @@ public extension UIViewChainable where Self: UIView {
 }
 
 extension UIView: UIViewChainable {
+    @discardableResult
     public func attachTo(_ superView: UIView) -> Self {
         superView.addSubview(self)
         return self
