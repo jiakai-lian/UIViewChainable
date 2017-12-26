@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UIViewChainable'
-  s.version          = '0.2.0'
+  s.version          = '0.3.0'
   s.summary          = 'An elegent extension to make UIView layout and confiugration chainable'
 
 # This description is used to generate tags and improve search results.
