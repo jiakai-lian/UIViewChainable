@@ -16,28 +16,32 @@ public struct Chain<Base: UIViewChainable> {
 }
 
 public extension UIViewChainable {
-    var chain: Chain<Self> {
+    var ui: Chain<Self> {
         return Chain(self)
     }
 }
 
 public extension Chain where Base: UIView {
     @discardableResult
-    public func config(_ config: (Base) -> Void) -> Base {
+    public func config(_ config: (Base) -> Void) -> Chain {
         config(base)
-        return base
+        return base.ui
     }
     
     @discardableResult
-    public func layout(_ layout: (Base) -> Void) -> Base {
+    public func layout(_ layout: (Base) -> Void) -> Chain {
         layout(base)
-        return base
+        return base.ui
     }
     
     
     //Automatically turn off the auto sizing flag
     @discardableResult
-    public func constraintLayout(_ layout: (Base) -> Void) -> Base {
+    public func constraintLayout(_ layout: (Base) -> Void) -> Chain {
+        guard base.superview != nil else {
+            fatalError("A UIView should be attached to its super view before doing constraint layout")
+        }
+        
         base.translatesAutoresizingMaskIntoConstraints = false
         return self.layout(layout)
     }
@@ -46,37 +50,37 @@ public extension Chain where Base: UIView {
     //You should only call this method when all the constraints are programatically added and should be all activated
     //Do not use this method if you have conditional constraints
     @discardableResult
-    public func activateAllConstraints() -> Base {
+    public func activateAllConstraints() -> Chain {
         return activate(base.constraints)
     }
     
     @discardableResult
-    public func activate(_ constraints:[NSLayoutConstraint]) -> Base {
+    public func activate(_ constraints:[NSLayoutConstraint]) -> Chain {
         constraints.forEach {
             $0.activate()
         }
         
-        return base
+        return base.ui
     }
     
     @discardableResult
-    public func deactivateAllConstraints() -> Base {
+    public func deactivateAllConstraints() -> Chain {
         return deactivate(base.constraints)
     }
     
     @discardableResult
-    public func deactivate(_ constraints:[NSLayoutConstraint]) -> Base {
+    public func deactivate(_ constraints:[NSLayoutConstraint]) -> Chain {
         constraints.forEach {
             $0.deactivate()
         }
         
-        return base
+        return base.ui
     }
     
     @discardableResult
-    public func attach(to superView: UIView) -> Base {
+    public func attach(to superView: UIView) -> Chain {
         superView.addSubview(base)
-        return base
+        return base.ui
     }
 }
 
