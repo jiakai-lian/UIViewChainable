@@ -15,7 +15,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        UILabel().ui
+        let lable1 = UILabel()
+            lable1.ui
             .attach(to: view)
             .constraintLayout {
             $0.centerXAnchor.constraint(equalTo: view.centerXAnchor).activate()
@@ -27,6 +28,21 @@ class ViewController: UIViewController {
                 $0.text = "Chainable UI config and layouts extension"
                 $0.numberOfLines = -1
                 $0.backgroundColor = .groupTableViewBackground
+        }
+        
+        let lable2 = UILabel()
+            lable2.ui
+            .attach(to: view)
+            .constraintLayout {
+                $0.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor).activate()
+                $0.bottomAnchor.constraint(equalTo: lable1.topAnchor,
+                                               constant: -8).activate()
+                $0.widthAnchor.constraint(equalTo: lable1.widthAnchor).activate()
+            }
+            .config {
+                $0.text = lable1.text
+                $0.numberOfLines = -1
+                $0.backgroundColor = .green
         }
     }
 
