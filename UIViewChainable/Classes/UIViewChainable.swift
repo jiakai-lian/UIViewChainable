@@ -46,36 +46,36 @@ public extension Chain where Base: UIView {
         return self.layout(layout)
     }
     
-    //Activate all the constraints
-    //You should only call this method when all the constraints are programatically added and should be all activated
-    //Do not use this method if you have conditional constraints
-    @discardableResult
-    public func activateAllConstraints() -> Chain {
-        return activate(base.constraints)
-    }
-    
-    @discardableResult
-    public func activate(_ constraints:[NSLayoutConstraint]) -> Chain {
-        constraints.forEach {
-            $0.activate()
-        }
-        
-        return base.ui
-    }
-    
-    @discardableResult
-    public func deactivateAllConstraints() -> Chain {
-        return deactivate(base.constraints)
-    }
-    
-    @discardableResult
-    public func deactivate(_ constraints:[NSLayoutConstraint]) -> Chain {
-        constraints.forEach {
-            $0.deactivate()
-        }
-        
-        return base.ui
-    }
+//    //Activate all the constraints
+//    //You should only call this method when all the constraints are programatically added and should be all activated
+//    //Do not use this method if you have conditional constraints
+//    @discardableResult
+//    public func activateAllConstraints() -> Chain {
+//        return activate(base.constraints)
+//    }
+//
+//    @discardableResult
+//    public func activate(_ constraints:[NSLayoutConstraint]) -> Chain {
+//        constraints.forEach {
+//            $0.activate()
+//        }
+//
+//        return base.ui
+//    }
+//
+//    @discardableResult
+//    public func deactivateAllConstraints() -> Chain {
+//        return deactivate(base.constraints)
+//    }
+//
+//    @discardableResult
+//    public func deactivate(_ constraints:[NSLayoutConstraint]) -> Chain {
+//        constraints.forEach {
+//            $0.deactivate()
+//        }
+//
+//        return base.ui
+//    }
     
     @discardableResult
     public func attach(to superView: UIView) -> Chain {
